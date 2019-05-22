@@ -1,0 +1,616 @@
+var headNavigation = {
+
+    /**
+     * function to toggle a css class when element has been clicked
+     *
+     * @param event
+     * @param element
+     */
+    clickHandler : function (event, element, prevent) {
+
+        // default setting var prevent
+        prevent = (typeof prevent !== 'undefined') ?  prevent : true;
+
+        // prevent default
+        if (prevent === true) {
+            event.preventDefault();
+        }
+
+        // check type of element
+        if ($j.type(element) == 'object') {
+
+            if (element.hasClass('active')) {
+                element.removeClass('active');
+            }
+
+            else {
+                element.addClass('active');
+            }
+        }
+
+        else {
+            if ($j(element).hasClass('active')) {
+                $j(element).removeClass('active');
+            }
+
+            else {
+                $j(element).addClass('active');
+            }
+        }
+    },
+
+    setActiveState : function (activeElement, showRoom) {
+        // get active content
+        var activeContent = $j(activeElement).text();
+
+        // write active content to showroom
+        $j(showRoom).text(activeContent);
+    },
+
+    /**
+     * function for all needed submenu adjustments
+     */
+    initSubmenu : function () {
+
+        // display dropdown menus to get it rendered
+        $j('.head-menu .submenu .mega-dropdown-categories').each(function(){
+
+            var megaCategory = $j(this);
+
+            if ($j(window).width() <= 1024) {
+                // deactivate first level link
+                $j(this).find('.dropdown-toggle').on({
+                    click: function (event) {
+                        event.preventDefault();
+                    }
+                });
+
+                // deactivate magento 2nd level links
+                if ($j('.subcategory.shopMenu').find('li.children').length) {
+                    $j('.subcategory.shopMenu').find('li.children').each(function(){
+                        // deactivate first level link
+                        $j(this).find('a.second-level').on({
+                            click: function (event) {
+                                event.preventDefault();
+                            }
+                        });
+                    });
+                }
+            }
+
+            // loop through every ul with class subcategory
+            $j(this).find('ul.subcategory').each(function(){
+
+                var currentSubcategoryList = $j(this);
+
+                // if ul has ul child, adjust width based on widest link and widest subcategory-categories list
+                if ($j(this).find('ul.subcategory-categories').length) {
+
+                    // add css class to identify as shop menu
+                    $j(this).addClass('shopMenu');
+
+                    // remove style tag - prevent miscalculation of height by window resize
+                    $j(this).removeAttr('style');
+
+                    $j(this).hide().show(0);
+
+                    setTimeout(function(){
+                        // get current height
+                        var currentHeight = currentSubcategoryList.height();
+                        var subcategoryCategoriesHeight = 0;
+                        var categoryTitleHeight = 0;
+
+                        currentSubcategoryList.children('li').each(function(){
+
+                            // get the height, when li is category title = top-offset of absolute positioning of subcategory-categories list
+                            if ($j(this).hasClass('category-title')) {
+                                categoryTitleHeight  = $j(this).height();
+                            }
+
+                            var tmpHeight = $j(this).find('ul.subcategory-categories').height() + categoryTitleHeight;
+
+                            if (tmpHeight > subcategoryCategoriesHeight) {
+                                subcategoryCategoriesHeight = tmpHeight;
+                            }
+                        });
+
+                        // set new height of subcategory to ensure that subcatgory categories lists are not overflowing
+                        if (currentHeight < subcategoryCategoriesHeight) {
+                            currentSubcategoryList.height(subcategoryCategoriesHeight);
+                        }
+
+                    }, 500);
+                }
+            });
+
+            setTimeout(function(){
+                // hide dropdown menu
+                megaCategory.find('.dropdown-menu').css('display', 'none');
+                megaCategory.find('.dropdown-menu').css('left', '0');
+            }, 501);
+
+
+            // define vars to store time
+            var timerShow;
+            var timerHide;
+            $j(this).mouseenter(function(){
+                // reset hide timer
+                clearTimeout(timerHide);
+                var originalElement = $j(this);
+
+                if ($j('.dropdown-menu.submenu-active').length) {
+                    // set show timer
+                    timerShow = setTimeout(function () {
+                        // add active class to submenut
+                        originalElement.find('.dropdown-menu').addClass('submenu-active');
+                        // add active class to top level element - prevent hover css of first-level entries by hovering by accident (sync of hover css and displaying submenu)
+                        originalElement.addClass('top-level-active');
+                    }, 100);
+                }
+
+                else {
+                    // add active class to submenut
+                    originalElement.find('.dropdown-menu').addClass('submenu-active');
+                    // add active class to top level element - prevent hover css of first-level entries by hovering by accident (sync of hover css and displaying submenu)
+                    originalElement.addClass('top-level-active');
+                }
+
+            }).mouseleave(function(){
+                clearTimeout(timerShow);
+                var originalElement = $j(this);
+
+                timerHide = setTimeout(function () {
+                    originalElement.find('.dropdown-menu.submenu-active').removeClass('submenu-active');
+                    originalElement.removeClass('top-level-active');
+                }, 100);
+            });
+        });
+    },
+
+    /**
+     * function for highlighting submenus as wished
+     */
+    initSubmenuHovering : function () {
+
+        var shopTimerShow;
+        var shopTimerHide;
+
+        // loop through every ul with class subcategory
+        $j('.head-menu .submenu ul.subcategory').each(function(){
+            if ($j(this).find('ul.subcategory-categories').length) {
+
+                // initial opened subcategory
+                $j(this).children('li').not('.category-title').first().addClass('hover');
+
+                var originalElement = $j(this);
+
+                // on leaving a subcatory which contains subcatory categories - reset shown subcategory categories to first ones
+                originalElement.on({
+                    mouseleave : function () {
+                        originalElement.children('li.hover').removeClass('hover');
+                        originalElement.children('li').not('.category-title').first().addClass('hover');
+                    }
+                });
+
+                $j(this).children('li').not('.category-title').each(function(){
+                    var originalElement = $j(this);
+                    $j(this).find('a.second-level').on({
+                        // on leaving a second level link, set the hide timer and clear the show timer set on entering the link before
+                        mouseleave : function () {
+                            clearTimeout(shopTimerShow);
+                            shopTimerHide = setTimeout(null, 100);
+                        },
+
+                        // on entering a a second level link, clear the hide timeout and set list element to hover
+                        mouseenter : function () {
+                            clearTimeout(shopTimerHide);
+                            shopTimerShow = setTimeout(function () {
+                                originalElement.parent('ul').children('li.hover').removeClass('hover');
+                                originalElement.addClass('hover');
+                            }, 100);
+                        }
+                    });
+                });
+            }
+        });
+    },
+
+    moveSocialMediaList : function () {
+        if ($j('.head-menu .submenu ul.social').length) {
+            $j('.head-menu .submenu ul.social').each(function(){
+
+                if (!$j(this).hasClass('last')) {
+                    if ($j(window).width() >= 768) {
+
+                        // check viewport change from mobile to desktop
+                        if ($j(this).hasClass('mobile')) {
+                            $j(this).removeClass('mobile');
+                            // put list back in place
+                            $j(this).prev('ul.subcategory').children('li:last').append($j(this));
+                            // remove class to get rid of the css
+                            $j(this).removeClass('subcategory');
+
+                            // remove click binding
+                            $j(this).unbind('click');
+                        }
+
+                        if (!$j(this).hasClass('desktop')) {
+                            // set viewport flag: desktop
+                            $j(this).addClass('desktop');
+                        }
+                    }
+
+                    else {
+
+                        // check viewport change from desktop to mobile
+                        if ($j(this).hasClass('desktop')) {
+                            $j(this).removeClass('desktop');
+                        }
+
+                        if (!$j(this).hasClass('mobile')) {
+                            // set viewport flag: mobile
+                            $j(this).addClass('mobile');
+
+                            // cp list after parent ul
+                            $j(this).insertAfter( $j(this).closest('ul.subcategory') );
+                            // add class subcategory to get the specific css
+                            $j(this).addClass('subcategory');
+                        }
+                    }
+                }
+            });
+        }
+    },
+
+    /**
+     * SLIDER
+     * function to initalize a slider when not all submenu elements can be shown
+     */
+    initSubmenuSlider : function () {
+        var listElements = headNavigation.getSliderListElements();
+        var containerWidth = $j('.head-menu .submenu .submenu-container').width();
+        var maxWidth = headNavigation.getSliderListMaxWidth(listElements);
+
+        if (containerWidth < maxWidth) {
+            // set width to prevent line break
+            $j('.head-menu .submenu ul.nav').width(maxWidth+1);
+
+            $j('.head-menu .submenu .submenu-slider.next').css('display', 'block');
+            $j('.head-menu .submenu .submenu-slider.prev').css('display', 'none');
+
+            // set class for some css adjustments
+            $j('.head-menu .submenu').addClass('sliderActive');
+
+            // add padding to slider container
+            $j('.head-menu .submenu.sliderActive').css('padding-right', '30px');
+
+            // add swipe detection to submenu
+            var element = document.getElementById('submenu');
+            headNavigation.swipeDetection(element, function(swipeDirection){
+
+                // swipe right -> prev slide
+                if (swipeDirection === 'right') {
+                    headNavigation.slideToSubmenuStart();
+                }
+
+                // swipe left -> next slide
+                else if (swipeDirection === 'left') {
+                    headNavigation.slideToSubmenuEnd(maxWidth);
+                }
+            })
+        }
+
+        else {
+            $j('.head-menu .submenu .submenu-slider').removeAttr('style');
+            $j('.head-menu .submenu ul.nav').removeAttr('style');
+        }
+    },
+
+    initNextSubmenuSlide : function () {
+        var listElements = headNavigation.getSliderListElements();
+        var maxWidth = headNavigation.getSliderListMaxWidth(listElements);
+
+        $j('.head-menu .submenu .submenu-slider.next').on({
+            click: function() {
+                headNavigation.slideToSubmenuEnd(maxWidth);
+            }
+        })
+    },
+
+    initPrevSubmenuSlide : function () {
+        $j('.head-menu .submenu .submenu-slider.prev').on({
+            click: function() {
+                headNavigation.slideToSubmenuStart();
+            }
+        })
+    },
+
+    /**
+     * function to slide to the end of the submenu
+     *
+     * @param maxWidth
+     */
+    slideToSubmenuEnd : function (maxWidth) {
+
+        // show prev button
+        $j('.head-menu .submenu .submenu-slider.prev').show();
+
+        // add padding to slider container
+        $j('.head-menu .submenu.sliderActive').css('padding-left', '30px');
+
+        // hide next button
+        $j('.head-menu .submenu .submenu-slider.next').hide();
+
+        // add padding to slider container
+        $j('.head-menu .submenu.sliderActive').css('padding-right', '0');
+
+        // scroll to end
+        /**
+         * the "scroll to the start" animation seems to be not as fast as the "scroll to the end" animation
+         * there for the "scroll to end" animation has a duration to make it fit
+         */
+        $j('.head-menu .submenu .submenu-container').animate(
+            {
+                scrollLeft: maxWidth
+            }, {
+                duration: 1000,
+                easing: "swing"
+            }
+        );
+    },
+
+    /**
+     * function to slide to the start of the submenu
+     */
+    slideToSubmenuStart : function () {
+        // hide prev button
+        $j('.head-menu .submenu .submenu-slider.prev').hide();
+
+        // add padding to slider container
+        $j('.head-menu .submenu.sliderActive').css('padding-left', '0');
+
+        // show next button
+        $j('.head-menu .submenu .submenu-slider.next').show();
+
+        // add padding to slider container
+        $j('.head-menu .submenu.sliderActive').css('padding-right', '30px');
+
+        // scroll to start
+        $j('.head-menu .submenu .submenu-container').animate({
+            scrollLeft: 0
+        });
+    },
+
+    /**
+     * function to get all list elements
+     *
+     * @returns {Array}
+     */
+    getSliderListElements : function () {
+        var listElements = [];
+
+        // loop through every first level link to get each width
+        $j('.head-menu .submenu ul.nav').children('.dropdown').each(function(){
+            var elementWidth = $j(this).width();
+            listElements.push(elementWidth);
+        });
+
+        return listElements;
+    },
+
+    /**
+     * function to calc the max width of the slider list
+     *
+     * @param listElements
+     * @returns {number}
+     */
+    getSliderListMaxWidth : function (listElements) {
+        var maxWidth = 0;
+
+        for (var i=0; i < listElements.length; i++) {
+            maxWidth += listElements[i];
+        }
+
+        return maxWidth;
+    },
+
+    /**
+     * destroy submenu slider
+     */
+    destroySubmenuSlider : function () {
+        // hide slider buttons
+        $j('.head-menu .submenu .submenu-slider').css('display', 'none');
+        // remove stlye attribute
+        $j('.head-menu .submenu ul.nav').removeAttr('style');
+        // remove css adjustment class
+        $j('.head-menu .submenu').removeClass('sliderActive');
+    },
+
+    /**
+     * function to detect swipe events
+     * src: http://www.javascriptkit.com/javatutors/touchevents2.shtml
+     *
+     * @param el
+     * @param callback
+     */
+    swipeDetection : function (el, callback) {
+        var touchsurface = el,
+            swipeDirection,
+            startX,
+            startY,
+            distX,
+            distY,
+            threshold = 150, //required min distance traveled to be considered swipe
+            restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+            allowedTime = 300, // maximum time allowed to travel that distance
+            elapsedTime,
+            startTime,
+            handleswipe = callback || function(swipeDirection){}
+
+        touchsurface.addEventListener('touchstart', function(e){
+            var touchobj = e.changedTouches[0]
+            swipeDirection = 'none'
+            dist = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() // record time when finger first makes contact with surface
+        }, false)
+
+        touchsurface.addEventListener('touchend', function(e){
+            var touchobj = e.changedTouches[0]
+            distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
+            distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
+            elapsedTime = new Date().getTime() - startTime // get time elapsed
+            if (elapsedTime <= allowedTime){ // first condition for awipe met
+                if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
+                    swipeDirection = (distX < 0)? 'left' : 'right' // if dist traveled is negative, it indicates left swipe
+                }
+            }
+            handleswipe(swipeDirection)
+        }, false)
+    },
+
+    initSubmenuInits : function () {
+        // init subcategory width adjustment for shop categories for desktop
+        headNavigation.initSubmenu();
+        headNavigation.initSubmenuHovering();
+        headNavigation.initSubmenuSlider();
+        headNavigation.initNextSubmenuSlide();
+        headNavigation.initPrevSubmenuSlide();
+    },
+
+    closeSwitch : function (element) {
+        $j(element).toggleClass('active');
+        $j(element + ' ul').toggle();
+    }
+};
+
+$j(document).ready(function(){
+    // init search button click
+    $j('.head-menu .head-search-btn').on({
+        click: function (event) {
+            headNavigation.clickHandler(event, '.head-menu .head-search');
+
+            // add css class to move mainmenu, when search bar is open
+            var mainmenuCssPath = '.head-menu .mainmenu';
+
+            if ($j(mainmenuCssPath).hasClass('searchOn')) {
+                $j(mainmenuCssPath).removeClass('searchOn');
+            }
+
+            else {
+                $j(mainmenuCssPath).addClass('searchOn');
+            }
+
+            // add css class to move submenu, when search bar is open
+            var submenuCssPath = '.head-menu .submenu';
+
+            if ($j(submenuCssPath).hasClass('searchOn')) {
+                $j(submenuCssPath).removeClass('searchOn');
+            }
+
+            else {
+                $j(submenuCssPath).addClass('searchOn');
+            }
+        }
+    });
+
+    // init mobile toggle first level
+    $j('.head-menu .submenu .dropdown-toggle').on({
+        click: function (event) {
+
+            if ($j(window).width() <= 1024) {
+                event.preventDefault();
+            }
+
+            var activeCategory = '.head-menu .submenu .dropdown-toggle.active';
+            var activeSubcategory = '.head-menu .submenu .subcategory.active';
+            var languageSwitch = '.head-menu .mainmenu .switcher-language';
+            var regionSwitch = '.head-menu .mainmenu .switcher-shipto';
+
+            if ($j(this).hasClass('active')) {
+                $j(this).removeClass('active');
+                // close already opened subcategory
+                $j(activeSubcategory).removeClass('active');
+            }
+
+            else {
+                // close already opened category
+                $j(activeCategory).removeClass('active');
+                // close already opened subcategory
+                $j(activeSubcategory).removeClass('active');
+
+                // close region switch
+                if ($j(regionSwitch + '.active').length) {
+                    headNavigation.closeSwitch(regionSwitch);
+                }
+
+                // close language switch
+                if ($j(languageSwitch + '.active').length) {
+                    headNavigation.closeSwitch(languageSwitch);
+                }
+
+                // open current category
+                if ($j(window).width() > 1024) {
+                    headNavigation.clickHandler(event, $j(this), false);
+                }
+
+                else {
+                    headNavigation.clickHandler(event, $j(this));
+                }
+            }
+        }
+    });
+
+    // init mobile toggle second level
+    $j('.head-menu .submenu .subcategory li.category-title.toggleLink').on({
+        click: function (event) {
+            headNavigation.clickHandler(event, $j(this).closest('.head-menu .submenu .subcategory'));
+        }
+    });
+
+    if ($j(window).width() >= 768) {
+
+        //headNavigation.initSubmenuInits()
+        setTimeout(function(){
+            headNavigation.initSubmenuInits()
+        }, 1000);
+    }
+
+    else {
+        headNavigation.setActiveState('.head-menu .switcher-shipto span.active', '.head-menu .switcher-shipto span.active-region');
+        headNavigation.setActiveState('.head-menu .switcher-language span.active', '.head-menu .switcher-language span.active-language');
+    }
+
+
+    headNavigation.moveSocialMediaList();
+});
+
+// resize adjustments
+$j(window).resize(function() {
+
+    headNavigation.moveSocialMediaList();
+
+    if ($j(window).width() >= 768) {
+
+        // hide dropdown menu
+        $j('.head-menu .submenu .mega-dropdown-categories').each(function(){
+            var megaCategory = $j(this);
+            megaCategory.find('.dropdown-menu').css('display', 'block');
+            megaCategory.find('.dropdown-menu').css('left', '-100%');
+        });
+
+        headNavigation.initSubmenu();
+        headNavigation.initSubmenuSlider();
+
+        // clear active showrooms
+        $j('.head-menu .switcher-shipto span.active-region').text('');
+        $j('.head-menu .switcher-language span.active-language').text('');
+    }
+
+    else {
+        headNavigation.destroySubmenuSlider();
+        headNavigation.setActiveState('.head-menu .switcher-shipto span.active', '.head-menu .switcher-shipto span.active-region');
+        headNavigation.setActiveState('.head-menu .switcher-language span.active', '.head-menu .switcher-language span.active-language');
+    }
+});

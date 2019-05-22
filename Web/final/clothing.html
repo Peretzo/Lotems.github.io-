@@ -1,0 +1,403 @@
+<html>
+	<head>
+		<title>Lotems</title>
+		
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script src="jquery-ui/jquery-ui.js"></script>
+		<link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css-main-form.css">
+		
+  <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200i' rel ='stylesheet' type='text/css'>
+<link href='http://serve.fontsproject.com/css?family=Journal+CLM:100'
+  rel='stylesheet' type='text/css'>
+		
+		<style type="text/css">
+			#top-bar{
+				height:50px;
+				width:auto;
+				margin:0 auto;
+				margin-top:-8px;
+				border-bottom:1px solid black;
+				background-color:#999999;
+				position:sticky;
+				top: 0;
+				z-index:5;
+
+					
+			}
+			body{
+				margin-left:-1px;
+			}
+			
+			#lotems-logo{
+				height:49px;
+				border:1px solid black;
+			}  
+			
+			.float_center {
+				float: right;
+				position: relative;
+				left: -50%; 
+				text-align: left;
+			}
+			.float_center > .child {
+				position: relative;
+				left: 50%;
+			}
+
+			body {
+				height:100%;
+				width:100%;
+				background-color: #e4e4e4;	
+
+				font-family: arial, sans-serif;
+			}
+			.clear {
+			  clear:both;
+			}
+			#phone-logo{
+				border-radius:50%;
+				height:35px;
+				margin-top:9px;
+				margin-right:175px;
+				outline: none;
+			}
+			#phone-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#mail-logo{
+				border-radius:50%;
+				height:35px;
+				margin-top:9px;
+				margin-right:15px;
+				outline: none;
+			}
+			#mail-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#facebook-logo{
+				margin-top:9px;
+				height:33px;
+				margin-right:15px;
+				outline: none;
+			}
+			#facebook-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			
+			#about-us{
+				float:right;
+				font-weight:bold;
+				margin-top:15px;
+				font-family: 'Sofia';font-size: 22px;
+				margin-right:-350px;
+			}
+			#about-us:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#whatsapp-logo{
+				margin-top:7px;
+				height:37px;
+				margin-right:15px;
+				outline: none;
+			}
+			#whatsapp-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  }
+			#hompage-logo{
+				margin-top:7px;
+				height:37px;
+				outline: none;
+				margin-right:75px;
+			}
+			#homepage-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			 }
+			 	
+			#title {
+			  text-align: right;
+			  color: #E4E4E4;
+			  background-color:#192954;
+			  font-size:50px;
+			  font-family: 'Akronim','Aclonica';
+			}
+			#bar{
+				background-color:#192954;
+				height:40px;
+				width:auto;
+				margin:0 auto;
+				border-top:1px solid black;
+				border-bottom:1px solid black;
+
+			}
+			
+			
+			#subtitle {
+			  text-align: center;
+			  color: #A00C2F;
+			  margin: 0;
+			}	
+			
+			#menu-bar-2 {               
+                width:1000px;
+                margin:0 auto;
+                height:40px;
+
+                
+            }
+            
+            #menu-bar-2 a {
+                
+                color: white;
+                text-decoration: none;
+                padding: 0 25px;
+                border-right: 1px solid #BB4545;
+                font-size:20px;
+                position: relative;
+                top: 10px;
+                float:right;
+				 font-family: 'Ellinia CLM', serif;
+            }
+            
+            #menu-bar-2 a:hover {
+                
+                text-decoration: underline;
+                
+            }
+			.no-border {
+                
+                border:none !important;
+                
+            }
+			#cutlotems-logo{
+				width:43px;
+			}
+			#totop{
+				height:55px;
+				float:right;
+				margin-right:30px;
+			
+			}
+			#lotems-title{
+			float:left;
+			margin-left:20px;
+			font-family: 'Journal CLM', serif;
+
+			}
+
+			* {box-sizing:border-box}
+
+			/* Slideshow container */
+			.slideshow-container {
+			  max-width: 600px;
+			  position: relative;
+			  margin: auto;
+			  margin-top:30px;
+			}
+
+			/* Hide the images by default */
+			.mySlides {
+				display: none;
+			}
+
+			/* Next & previous buttons */
+			.prev, .next {
+			  cursor: pointer;
+			  position: absolute;
+			  top: 50%;
+			  width: auto;
+			  margin-top: -22px;
+			  padding: 16px;
+			  color: white;
+			  font-weight: bold;
+			  font-size: 25px;
+			  transition: 0.6s ease;
+			  border-radius: 0 3px 3px 0;
+			}
+
+			/* Position the "next button" to the right */
+			.next {
+			  right: 0;
+			  border-radius: 3px 0 0 3px;
+			}
+
+			/* On hover, add a black background color with a little bit see-through */
+			.prev:hover, .next:hover {
+			  background-color: rgba(0,0,0,0.8);
+			}
+
+			/* Caption text */
+			.text {
+			  color: #black;
+			  font-size: 15px;
+			  padding: 8px 12px;
+			  position: absolute;
+			  bottom: 8px;
+			  width: 100%;
+			  text-align: center;
+			}
+
+			/* Number text (1/3 etc) */
+			.numbertext {
+			  color: #f2f2f2;
+			  font-size: 12px;
+			  padding: 8px 12px;
+			  position: absolute;
+			  top: 0;
+			}
+
+			/* The dots/bullets/indicators */
+			.dot {
+			  cursor: pointer;
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbb;
+			  border-radius: 50%;
+			  display: inline-block;
+			  transition: background-color 0.6s ease;
+			}
+
+			.active, .dot:hover {
+			  background-color: #717171;
+			}
+
+			/* Fading animation */
+			.fade {
+			  -webkit-animation-name: fade;
+			  -webkit-animation-duration: 1.5s;
+			  animation-name: fade;
+			  animation-duration: 1.5s;
+			}
+
+			@-webkit-keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+
+			@keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+			/*end of slideshow*/
+
+		</style>
+	
+	
+	</head>
+
+		<body dir=rtl >
+		<div id="top-bar">
+		
+			<img class="float_center" id="lotems-logo" src="lotems-logo.jpg">
+			
+			
+			<a href="tel:0506361179">
+				<img class="float_center" id="phone-logo" src="phone-logo.png">
+			</a>
+			<a href="mailto:lotems0001@walla.com"> 
+				<input type="image" class="float_center" id="mail-logo" src="mail-logo.png">
+			</a>
+			<a href="https://www.facebook.com/%D7%9C%D7%95%D7%98%D7%9E%D7%A1-123781868326093/?ref=br_rs" target="_blank">
+				<input type="image" class="float_center" id="facebook-logo" src="facebook-logo.png">
+			</a>
+			<a href="https://api.whatsapp.com/send?phone=9720506361179" target="_blank">	
+				<input type="image" class="float_center" id="whatsapp-logo" src="what.png">
+			</a>
+			<a href="index.html">	
+				<input type="image" class="float_center" id="hompage-logo" src="homepage-logo.png">
+			</a>
+			<div class="tooltip" id="about-us">about us 
+				<span class="tooltiptext">Lotems' tennis and sports equipment shop<br>  Address: shlom hagalel 3 </br> <br>Contactn number : Orel-0506361179 </br></span>
+			</div>
+
+		</div>
+		<div class="clear"></div>
+
+		<div id="title">
+			<img id="cutlotems-logo" src="cutlogo-lotems.png">	
+			<span id="lotems-title"> lotem's </span>
+		</div>			
+		<div class="clear"></div>
+
+		<div id="bar">
+		
+                <div id="menu-bar-2">
+					<a href="racquets.html"  class="no-border">racquets</a>
+					<a href="shoes.html">shoes</a>
+					<a href="bags.html">bags</a>
+					<a href="clothing.html">clothing</a>
+					<a href="balls.html">balls</a>
+					<a href="accessories.html">accessories</a>
+					<a href="string.html">string</a>
+
+                    <a href="sale.html">sale</a>
+		</div>
+		<div class="clear"></div>
+		
+		
+		
+		<hr id="end-line"></hr>
+		<div>  
+			<div id="backToTop">go up</div>
+			<img id="totop" src="up.png">
+		</div>
+		<div id="phones-num">
+			<p style="font-size:17px"> Orel-0506361179</p>
+			<p style="font-size:17px"> Lior-0505553764</p>
+			<p> lotems0001@walla.com </p>
+		</div>
+		<h2 id="make-con"> contact us </h2>
+
+		
+	<script type="text/javascript">
+			$("#backToTop").css("display", "none");
+			$( ".draggable" ).draggable();
+			$("#totop").click(function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			});
+			$('#totop').attr('title', 'back to top');
+
+			var slideIndex = 1;
+			showSlides(slideIndex);
+			// slideshow //
+			// Next/previous controls
+			function plusSlides(n) {
+			  showSlides(slideIndex += n);
+			}
+
+			// Thumbnail image controls
+			function currentSlide(n) {
+			  showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("dot");
+			  if (n > slides.length) {slideIndex = 1} 
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none"; 
+			  }
+			  for (i = 0; i < dots.length; i++) {
+				  dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block"; 
+			  dots[slideIndex-1].className += " active";
+			}
+			// end of slideshow //
+
+		
+	
+	</script>
+	
+	</body>
+
+
+</html>

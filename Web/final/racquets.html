@@ -1,0 +1,374 @@
+<html>
+	<head>
+		<title>racquets</title>
+		
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script src="jquery-ui/jquery-ui.js"></script>
+		<link href="jquery-ui/jquery-ui.css" rel="stylesheet">		
+		<link rel="stylesheet" type="text/css" href="css-main-form.css">
+
+		<link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200i' rel ='stylesheet' type='text/css'>
+		<link href='http://serve.fontsproject.com/css?family=Journal+CLM:100'
+			rel='stylesheet' type='text/css'>
+		<link href='http://serve.fontsproject.com/css?family=Horev:800'
+			rel='stylesheet' type='text/css'>
+			
+		<style type="text/css">
+			#top-bar{
+				height:50px;
+				width:auto;
+				margin:0 auto;
+				margin-top:-8px;
+				border-bottom:1px solid black;
+				background-color:#999999;
+				position:sticky;
+				top: 0;
+				type="text/css";
+				z-index:5;		
+			}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding: 0 20px;
+    font-family: Arial;
+	margin-left:-2px;
+}
+
+/* Center website */
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 50px;
+    word-break: break-all;
+	
+}
+h2{
+		margin-left:500px;
+	  font-family: serif;
+	  font-size:40px;
+
+}
+
+.row {
+    margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row,
+.row > .column {
+    padding: 15px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: right;
+    width: 25%;
+    display: none; /* Hide columns by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content */
+.content {
+    background-color: white;
+    padding: 10px;
+	text-align:right;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+    display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+  font-weight:bold;
+
+}
+			#lotems-title{
+			float:left;
+			margin-left:20px;
+			font-family: 'Journal CLM', serif;
+
+			}
+			#title {
+			  text-align: right;
+			  color: #E4E4E4;
+			  background-color:#192954;
+			  font-size:50px;
+			  font-family: 'Akronim','Aclonica';
+			}
+/* Add a grey background color on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background color to the active button */
+.btn.active {
+  background-color: #666;
+   color: white;
+}
+
+
+#cont{
+	width:1000px;
+	margin-left:100px;
+}
+
+.imageSize{
+	height:200.5px;
+	width:20px;
+}
+
+			
+			
+		</style>
+
+
+	
+	
+	</head>
+
+	<body>
+		<div id="top-bar"> 
+			<img class="float_center" id="lotems-logo" src="lotems-logo.jpg">
+			<a href="tel:0506361179">
+				<img class="float_center" id="phone-logo" src="phone-logo.png">
+			</a>
+			<a href="mailto:lotems0001@walla.com"> 
+				<input type="image" class="float_center" id="mail-logo" src="mail-logo.png">
+			</a>
+			<a href="https://www.facebook.com/%D7%9C%D7%95%D7%98%D7%9E%D7%A1-123781868326093/?ref=br_rs" target="_blank">
+				<input type="image" class="float_center" id="facebook-logo" src="facebook-logo.png">
+			</a>
+			<a href="https://api.whatsapp.com/send?phone=9720506361179" target="_blank">	
+				<input type="image" class="float_center" id="whatsapp-logo" src="what.png">
+			</a>
+			<a href="index.html">	
+				<input type="image" class="float_center" id="hompage-logo" src="homepage-logo.png">
+			</a>
+			<div class="tooltip" id="about-us">about us 
+				<span class="tooltiptext">Lotems' tennis and sports equipment shop<br>  Address: shlom hagalel 3 </br> <br>Contactn number : 
+				Orel-0506361179 </br></span>
+			</div>
+
+		</div>
+		<div class="clear"></div>
+
+		<div id="title">
+			<img id="cutlotems-logo" src="cutlogo-lotems.png">	
+			<span id="lotems-title"> Lotem's </span>
+		</div>			
+		<div class="clear"></div>
+
+		<div id="bar">
+		
+                <div id="menu-bar-2">
+					<a href="racquets.html"  class="no-border">racquets</a>
+					<a href="shoes.html">shoes</a>
+					<a href="bags.html">bags</a>
+					<a href="clothing.html">clothing</a>
+					<a href="balls.html">balls</a>
+					<a href="accessories.html">accessories</a>
+					<a href="string.html">string</a>
+
+                    <a href="sale.html">sale</a>
+		</div>
+		<div class="clear"></div>
+		
+		
+		
+<h2>racquets</h2>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> show all</button>
+  <button class="btn" onclick="filterSelection('Head')"> Head</button>
+  <button class="btn" onclick="filterSelection('wilson')"> Wilson</button>
+  <button class="btn" onclick="filterSelection('babolat')"> Babolat</button>
+</div>
+
+<div id="cont">
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column Head">
+    <div class="content">
+      <img class="imageSize" src="photos/speed.jpg" alt="Speed" style="width:100%">
+      <h4>Speed</h4>
+      <u>detailes</u>
+	
+    </div>
+  </div>
+  <div class="column Head">
+    <div class="content">
+      <img src="photos/radical-lite.jpg" alt="Radical" style="width:100%">
+      <h4>Radical lite</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column Head">
+    <div class="content">
+      <img id="temp" src="photos/instinct.jpg" alt="instinct" style="width:100%">
+      <h4>instinct</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+
+  <div class="column wilson">
+    <div class="content">
+      <img class="imageSize" src="photos/six-one.jpg" alt="six-one" style="width:100%">
+      <h4>Six-one</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-sixone95.jpg" alt="six-one95" style="width:100%">
+      <h4>Six-one 95s</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-steam.jpg" alt="Steam" style="width:100%">
+      <h4>Steam</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-blade.jpg" alt="Blade" style="width:100%">
+      <h4>Blade</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+    <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-blade98.jpg" alt="blade98" style="width:100%">
+      <h4>blade 98 </h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+    <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-burn.jpg" alt="Burn" style="width:100%">
+      <h4>Burn</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+    <div class="column wilson">
+    <div class="content">
+      <img src="photos/wilson-juice.jpg" alt="Juice" style="width:100%">
+      <h4>Juice</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+
+<!-- END GRID -->
+</div>	
+				
+</div>				
+						
+		<div class="clear"></div>										
+		<div>  
+			<hr id="end-line"></hr>
+			<div id="backToTop">back to top</div>
+			<img id="totop" src="up.png">
+		</div>
+		
+
+		<div id="phones-num">
+			<p style="font-size:17px"> Orel-0506361179</p>
+			<p style="font-size:17px"> Lior-0505553764</p>
+			<p> lotems0001@walla.com </p>
+		</div>
+		<h2 id="make-con"> contact us </h2>
+
+		
+		
+	<script type="text/javascript">
+			$("#backToTop").css("display", "none");
+			$( ".draggable" ).draggable();
+			$("#totop").click(function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			});
+			$('#totop').attr('title', 'back to top');
+
+			filterSelection("all") // Execute the function and show all columns
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1); 
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+		
+		$("#temp").click(function(){
+			alert('height='+$(this).height());
+			alert('weight='+$(this).width());
+
+});
+
+
+		
+	
+	</script>
+	
+	</body>
+
+
+</html>

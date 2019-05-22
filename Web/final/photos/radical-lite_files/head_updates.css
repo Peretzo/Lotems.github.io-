@@ -1,0 +1,127 @@
+/*
+ *  HEAD Magento Custom CSS File for override style changes
+ *	SYSTEM: Magento Rebelsclub
+ *
+ *  Created: Novmeber 14th, 2014
+ *  Author: Michael Holst
+ *
+ *  Last modified: 2018-01-23, 07:35 (SR)
+ *  
+ *
+ */
+
+/* Global Additional Styles
+   ========================================================================== */
+
+/*** TEMPORARY TEST Nav col width (SR) ****/
+
+
+
+
+
+ul#mega-dropdown-392 .mega-dropdown-item > ul > li.level3 { width: 150px;}
+
+.main-container .teaser {
+	height: auto !important;
+}
+
+.main-container[class*="col2-"] .teaser {
+	height: auto !important;
+}
+
+
+.footer-corporate-links > li > address {
+    border: 0;
+    color: #7d7d7d;
+    display: inline;
+    font: 12px/1.17em 'Interstate WGL Cond',Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.promo-block_description--center-position > p {
+    color: #fff;
+    font: 14px 'Interstate WGL Light',Arial;
+    letter-spacing: 1px;
+    padding: 30px 10px 27px;
+}
+
+
+.dark-theme { color: #000000 !important; }
+hr.dark-theme { border: 1px solid #000; }
+hr.bright-theme { border: 1px solid #fff; }
+
+
+.ma_transl_matching_strings table tr td:first-child 	{ font-family: "Interstate WGL Cond" !important; font-weight: bold; text-transform: uppercase; width: 125px; padding-left: 0 }
+.ma_transl_matching_strings table tr td 				{ font-family: "Interstate WGL Light", Helvetica,Arial}
+
+.ma_transl_facts table tr td:first-child 				{ font-family: "Interstate WGL",Helvetica,Arial; font-weight: bold; text-transform: uppercase; width: 125px; padding-left: 0; }
+.ma_transl_facts table tr td 							{ font-family: "Interstate WGL Light", Helvetica,Arial}
+
+
+.ma_transl_technologies .technologies-list-item-holder {
+    width: 125px;
+}
+
+
+.product-view .accordion>div.accordion-content {
+    padding: 0 25px 20px 0;
+}
+
+
+
+
+@media only screen and (max-width: 480px) {
+
+/*.wrapper .page .page-header .logo {
+    margin: 4px 0 0 0 !important;
+}  das wirkt sich im Moment ja GLOBAL auf alle Sites aus – deshalb wieder deaktiviert */
+
+	
+.promo-block_description {
+    color: #000;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    left: 40%;
+    top: 25%;
+    margin-left: -30%;
+    width: 80%;
+}
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+
+.promo-block_description {
+    color: #000;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	left: 30%;
+	top: 25%;
+	margin-left: -16.5%;
+	width: 33%;
+  }
+
+	
+}
+
+@media only screen and (min-width: 980px) {
+	.promo-block_description {
+    color: #000;
+	left: 25%;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	top: 25%;
+	width: 33%;
+  }
+
+    
+}
+
+
+

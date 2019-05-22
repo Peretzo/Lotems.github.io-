@@ -1,0 +1,712 @@
+<html>
+	<head>
+		<title>Lotems</title>
+		
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script src="jquery-ui/jquery-ui.js"></script>
+		<link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css-main-form.css">
+		
+  <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200i' rel ='stylesheet' type='text/css'>
+<link href='http://serve.fontsproject.com/css?family=Journal+CLM:100'
+  rel='stylesheet' type='text/css'>
+		
+		<style type="text/css">
+			#top-bar{
+				height:50px;
+				width:auto;
+				margin:0 auto;
+				margin-top:-8px;
+				border-bottom:1px solid black;
+				background-color:#999999;
+				position:sticky;
+				top: 0;
+				z-index:5;
+
+					
+			}
+			body{
+				margin-left:-1px;
+			}
+			
+			#lotems-logo{
+				height:49px;
+				border:1px solid black;
+			}  
+			
+			.float_center {
+				float: right;
+				position: relative;
+				left: -50%; 
+				text-align: left;
+			}
+			.float_center > .child {
+				position: relative;
+				left: 50%;
+			}
+
+			body {
+				height:100%;
+				width:100%;
+				background-color: #e4e4e4;	
+
+				font-family: arial, sans-serif;
+			}
+			.clear {
+			  clear:both;
+			}
+			#phone-logo{
+				border-radius:50%;
+				height:35px;
+				margin-top:9px;
+				margin-right:175px;
+				outline: none;
+			}
+			#phone-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#mail-logo{
+				border-radius:50%;
+				height:35px;
+				margin-top:9px;
+				margin-right:15px;
+				outline: none;
+			}
+			#mail-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#facebook-logo{
+				margin-top:9px;
+				height:33px;
+				margin-right:15px;
+				outline: none;
+			}
+			#facebook-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			
+			#about-us{
+				float:right;
+				font-weight:bold;
+				margin-top:15px;
+				font-family: 'Sofia';font-size: 22px;
+				margin-right:-350px;
+			}
+			#about-us:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  filter: drop-shadow(5px 5px 5px #222);
+			}
+			#whatsapp-logo{
+				margin-top:7px;
+				height:37px;
+				margin-right:15px;
+				outline: none;
+			}
+			#whatsapp-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			  }
+			#hompage-logo{
+				margin-top:7px;
+				height:37px;
+				outline: none;
+				margin-right:75px;
+			}
+			#homepage-logo:hover {
+			  -webkit-filter: drop-shadow(5px 5px 5px #222);
+			 }
+			 	
+			#title {
+			  text-align: right;
+			  color: #E4E4E4;
+			  background-color:#192954;
+			  font-size:50px;
+			  font-family: 'Akronim','Aclonica';
+			}
+			#bar{
+				background-color:#192954;
+				height:40px;
+				width:auto;
+				margin:0 auto;
+				border-top:1px solid black;
+				border-bottom:1px solid black;
+
+			}
+			
+			
+			#subtitle {
+			  text-align: center;
+			  color: #A00C2F;
+			  margin: 0;
+			}	
+			
+			#menu-bar-2 {               
+                width:1000px;
+                margin:0 auto;
+                height:40px;
+
+                
+            }
+            
+            #menu-bar-2 a {
+                
+                color: white;
+                text-decoration: none;
+                padding: 0 25px;
+                border-right: 1px solid #BB4545;
+                font-size:20px;
+                position: relative;
+                top: 10px;
+                float:right;
+				 font-family: 'Ellinia CLM', serif;
+            }
+            
+            #menu-bar-2 a:hover {
+                
+                text-decoration: underline;
+                
+            }
+			.no-border {
+                
+                border:none !important;
+                
+            }
+			#cutlotems-logo{
+				width:43px;
+			}
+			#totop{
+				height:55px;
+				float:right;
+				margin-right:30px;
+			
+			}
+			#lotems-title{
+			float:left;
+			margin-left:20px;
+			font-family: 'Journal CLM', serif;
+
+			}
+
+			* {box-sizing:border-box}
+
+			/* Slideshow container */
+			.slideshow-container {
+			  max-width: 600px;
+			  position: relative;
+			  margin: auto;
+			  margin-top:30px;
+			  margin-bottom:70px;
+			}
+
+			/* Hide the images by default */
+			.mySlides {
+				display: none;
+			}
+			.K-Swiss-Slides {
+				display: none;
+			}
+
+			/* Next & previous buttons */
+			.prev, .next {
+			  cursor: pointer;
+			  position: absolute;
+			  top: 50%;
+			  width: auto;
+			  margin-top: -22px;
+			  padding: 16px;
+			  color: white;
+			  font-weight: bold;
+			  font-size: 25px;
+			  transition: 0.6s ease;
+			  border-radius: 0 3px 3px 0;
+			}
+
+			/* Position the "next button" to the right */
+			.next {
+			  right: 0;
+			  border-radius: 3px 0 0 3px;
+			}
+
+			/* On hover, add a black background color with a little bit see-through */
+			.prev:hover, .next:hover {
+			  background-color: rgba(0,0,0,0.8);
+			}
+
+			/* Caption text */
+			.text {
+			  color: #black;
+			  font-size: 15px;
+			  padding: 8px 12px;
+			  position: absolute;
+			  bottom: 8px;
+			  width: 100%;
+			  text-align: center;
+			}
+
+			/* Number text (1/3 etc) */
+			.numbertext {
+			  color: #f2f2f2;
+			  font-size: 12px;
+			  padding: 8px 12px;
+			  position: absolute;
+			  top: 0;
+			}
+
+			/* The dots/bullets/indicators */
+			.dot {
+			  cursor: pointer;
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbb;
+			  border-radius: 50%;
+			  display: inline-block;
+			  transition: background-color 0.6s ease;
+			}
+
+			.active, .dot:hover {
+			  background-color: #717171;
+			}
+
+			/* Fading animation */
+			.fade {
+			  -webkit-animation-name: fade;
+			  -webkit-animation-duration: 1.5s;
+			  animation-name: fade;
+			  animation-duration: 1.5s;
+			}
+
+			@-webkit-keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+
+			@keyframes fade {
+			  from {opacity: .4} 
+			  to {opacity: 1}
+			}
+			/*end of slideshow*/
+			
+			.container {
+    position: relative; 
+    max-width: 800px; /* Maximum width */
+    margin: 0 auto; /* Center it */
+}
+
+.container .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding:0 10px; /* Some padding */
+	height:90px;
+	text-align:right;
+	
+}
+.price{
+	float:left;
+	margin-top:-40px;
+}
+
+/* The sidebar menu */
+.sidenav {
+  /*  height: 33%; /* Full-height: remove this if you want "auto" height */ */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 200; /* Stay at the top */
+    right: 10;
+    /*background-color: #111; /* Black */*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 15px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+	text-align:right;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: black;
+}
+
+/* Style page content */
+.main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+		</style>
+	
+	
+	</head>
+
+		<body dir=rtl >
+		<div id="top-bar">
+		
+			<img class="float_center" id="lotems-logo" src="lotems-logo.jpg">
+			
+			
+			<a href="tel:0506361179">
+				<img class="float_center" id="phone-logo" src="phone-logo.png">
+			</a>
+			<a href="mailto:lotems0001@walla.com"> 
+				<input type="image" class="float_center" id="mail-logo" src="mail-logo.png">
+			</a>
+			<a href="https://www.facebook.com/%D7%9C%D7%95%D7%98%D7%9E%D7%A1-123781868326093/?ref=br_rs" target="_blank">
+				<input type="image" class="float_center" id="facebook-logo" src="facebook-logo.png">
+			</a>
+			<a href="https://api.whatsapp.com/send?phone=9720506361179" target="_blank">	
+				<input type="image" class="float_center" id="whatsapp-logo" src="what.png">
+			</a>
+			<a href="index.html">	
+				<input type="image" class="float_center" id="hompage-logo" src="homepage-logo.png">
+			</a>
+				<div class="tooltip" id="about-us">about us 
+				<span class="tooltiptext">Lotems' tennis and sports equipment shop<br>  Address: shlom hagalel 3 </br> <br>Contactn number : Orel-0506361179 </br></span>
+			</div>
+
+		</div>
+		<div class="clear"></div>
+
+		<div id="title">
+			<img id="cutlotems-logo" src="cutlogo-lotems.png">	
+			<span id="lotems-title"> lotem's </span>
+		</div>			
+		<div class="clear"></div>
+
+		<div id="bar">
+		
+                <div id="menu-bar-2">
+					<a href="racquets.html"  class="no-border">racquets</a>
+					<a href="shoes.html">shoes</a>
+					<a href="bags.html">bags</a>
+					<a href="clothing.html">clothing</a>
+					<a href="balls.html">balls</a>
+					<a href="accessories.html">accessories</a>
+					<a href="string.html">string</a>
+
+                    <a href="sale.html">sale</a>
+		</div>
+		<div class="clear"></div>
+		
+		<!--HEAD Slideshow container -->
+<div class="slideshow-container">
+<a id='head'><h2>Head</h2></a>
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade container">
+    <div class="numbertext">1 / 4</div>
+    <img src="photos/bag2.jpg" style="width:80%">
+    <div class="content">
+		<h1>black</h1>
+		<p class="price">cost:299 nis</p>
+	</div>
+  </div>
+  
+   <div class="mySlides fade container">
+    <div class="numbertext">2 / 4</div>
+    <img src="photos/bag3.jpg" style="width:80%">
+    <div class="content">
+		<h1> brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="mySlides fade container">
+    <div class="numbertext">3 / 4</div>
+    <img src="photos/bag4.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+
+
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1,'mySlides')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1,'mySlides')">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(2,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(3,'mySlides')"></span>
+
+  
+</div>
+
+<!--end of HEAD slideshow-container-->
+
+
+
+		<div class="clear"></div>
+
+		
+
+		<!-- K-SWISS  Slideshow container -->
+<div class="slideshow-container">
+<a id='k-swiss'><h2>ADIDAS</h2></a>
+  <!-- Full-width images with number and caption text -->
+  <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">1 / 7</div>
+    <img src="photos/bag1.jpg" style="width:100%">
+    <div class="content">
+		<h1>brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">2 / 7</div>
+    <img src="photos/bag5.jpg" style="width:100%">
+    <div class="content">
+		<h1> brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">3 / 7</div>
+    <img src="photos/bag6.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  <!--
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">4 / 7</div>
+    <img src="photos/k-white.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">5 / 7</div>
+    <img src="photos/k-blue1.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">6 / 7</div>
+    <img src="photos/k-pink-kids.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="K-Swiss-Slides fade container">
+    <div class="numbertext">7 / 7</div>
+    <img src="photos/k-white-kids.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+-->
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1,'K-Swiss-Slides')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1,'K-Swiss-Slides')">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles 
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(2,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(3,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(4,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(5,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(6,'K-Swiss-Slides')"></span> 
+  <span class="dot" onclick="currentSlide(7,'K-Swiss-Slides')"></span> 
+
+</div>
+		-->
+		<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(2,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(3,'mySlides')"></span>
+
+  
+</div>
+<!--end of K-SWISS slideshow-container-->
+	
+		<div class="clear"></div>	
+
+
+
+		<!--BABOLAT Slideshow container -->
+<div class="slideshow-container">
+<a id='babolat'><h2>NIKE</h2></a>
+  <!-- Full-width images with number and caption text -->
+  <div class="Babolat-slides fade container">
+    <div class="numbertext">1 / 4</div>
+    <img src="photos/bag7.jpg" style="width:100%">
+    <div class="content">
+		<h1>brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="Babolat-slides fade container">
+    <div class="numbertext">2 / 4</div>
+    <img src="photos/bag8.jpg" style="width:100%">
+    <div class="content">
+		<h1> brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  
+   <div class="Babolat-slides fade container">
+    <div class="numbertext">3 / 4</div>
+    <img src="photos/bag9.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+  <!--
+   <div class="Babolat-slides fade container">
+    <div class="numbertext">4 / 4</div>
+    <img src="photos/white-head.jpg" style="width:100%">
+    <div class="content">
+		<h1>   brand</h1>
+		<p class="price">cost:</p>
+	</div>
+  </div>
+
+
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1,'Babolat-slides')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1,'Babolat-slides')">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles 
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1,'Babolat-slides')"></span> 
+  <span class="dot" onclick="currentSlide(2,'Babolat-slides')"></span> 
+  <span class="dot" onclick="currentSlide(3,'Babolat-slides')"></span>
+  <span class="dot" onclick="currentSlide(4,'Babolat-slides')"></span> 
+  
+</div>
+			-->
+			<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(2,'mySlides')"></span> 
+  <span class="dot" onclick="currentSlide(3,'mySlides')"></span>
+
+  
+</div>
+<!--end of BABOLAT slideshow-container-->
+
+
+
+		<div class="clear"></div>
+
+
+
+		<div class="clear"></div>	
+		
+			<!-- Side navigation -->
+<div class="sidenav">
+  <a href="#head">HEAD</a>
+  <a href="#k-swiss">ADIDAS</a>
+  <a href="#babolat">NIKE</a>
+</div>
+		
+		
+
+
+		<div class="clear"></div>
+		<hr id="end-line"></hr>
+		<div>  
+			<div id="backToTop">back to top</div>
+			<img id="totop" src="up.png">
+		</div>
+		<div id="phones-num">
+			<p style="font-size:17px"> Orel-0506361179</p>
+			<p style="font-size:17px"> Lior-0505553764</p>
+			<p> lotems0001@walla.com </p>
+		</div>
+		<h2 id="make-con"> contact us </h2>
+
+		
+	<script type="text/javascript">
+			$("#backToTop").css("display", "none");
+			$( ".draggable" ).draggable();
+			$("#totop").click(function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			});
+			$('#totop').attr('title', 'back to top');
+
+			var slideIndex = 1;
+			showSlides(slideIndex,"K-Swiss-Slides");
+			showSlides(slideIndex,"mySlides");
+			showSlides(slideIndex,"Babolat-slides");
+			showSlides(slideIndex,"Wilson-slides");
+
+
+
+			// slideshow //
+			// Next/previous controls
+			function plusSlides(n,necSlide) {
+			  showSlides(slideIndex += n,necSlide);
+			}
+
+			// Thumbnail image controls
+			function currentSlide(n,necSlide) {
+			  showSlides(slideIndex = n,necSlide);
+			}
+
+			function showSlides(n,necSlide) {
+			  var i;
+			  var slides = document.getElementsByClassName(necSlide);
+			  var dots = document.getElementsByClassName("dot");
+			  if (n > slides.length) {slideIndex = 1} 
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none"; 
+			  }
+			  for (i = 0; i < dots.length; i++) {
+				  dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block"; 
+			  dots[slideIndex-1].className += " active";
+			}
+			// end of slideshow //
+
+		
+	
+	</script>
+	
+	</body>
+
+
+</html>

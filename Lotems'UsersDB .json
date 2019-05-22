@@ -1,0 +1,58 @@
+{
+   "Users":[
+      {
+         "User1":{
+            "full name":{
+               "First Name":"nathan",
+               "Last Name":"khutorskoy"
+            },
+            "customer ID":"520489563",
+            "Credit Card":{
+               "Number":"1254856324589752",
+               "Expiration Date":"11/22",
+               "CVV":"125"
+            },
+            "Phone Number":"0548648977",
+            "Email Address":"natankrfq@gmail.com",
+            "Shipping address":{
+               "Street":"Nesiei Israel",
+               "House number":"75",
+               "Apartment Number":"2",
+               "City":"Karmiel"
+            },
+            "Receipts":"rec.docx",
+            "Customer Orders":{
+               "K-Swiss":"1",
+               "Babolat":"3"
+            }
+         }
+      },
+      {
+         "User2":{
+            "full name":{
+               "First Name":"nathan",
+               "Last Name":"khutorskoy"
+            },
+            "customer ID":"520489563",
+            "Credit Card":{
+               "Number":"1254856324589752",
+               "Expiration Date":"11/22",
+               "CVV":"125"
+            },
+            "Phone Number":"0548648977",
+            "Email Address":"natankrfq@gmail.com",
+            "Shipping address":{
+               "Street":"Nesiei Israel",
+               "House number":"75",
+               "Apartment Number":"2",
+               "City":"Karmiel"
+            },
+            "Receipts":"rec.docx",
+            "Customer Orders":{
+               "K-Swiss":"1",
+               "Babolat":"3"
+            }
+         }
+      }
+   ]
+}
